@@ -51,7 +51,6 @@ class EloquentArticleRepository implements ArticleRepositoryInterface {
                     'full_description' => $article->fullDescription(),
                 ]
             )->save();
-
             if ($article->comments()->has()) {
                 Comment::create(
                     [

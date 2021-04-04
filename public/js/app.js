@@ -2083,6 +2083,7 @@ __webpack_require__.r(__webpack_exports__);
 
       var url = 'http://18.217.62.142/api/comments/' + id;
       this.article.comment = this.comment;
+      this.article.commentOnly = true;
       axios.post(url, this.article).then(function (res) {
         window.location.href = 'http://18.217.62.142/articles/detail/' + _this2.$route.params.id;
       })["catch"](function (err) {
@@ -38056,7 +38057,7 @@ var render = function() {
         )
       : _vm._e(),
     _vm._v(" "),
-    _c("h2", [_vm._v("Comments")]),
+    _c("h2", { staticClass: "mt-4" }, [_vm._v("Comments")]),
     _vm._v(" "),
     _c(
       "div",

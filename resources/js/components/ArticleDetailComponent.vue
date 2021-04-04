@@ -14,7 +14,7 @@
     </router-link>
     <button v-on:click="onDelete(article.id)" type="button" class="btn btn-danger">Delete</button>
   </div>
-  <h2>Comments</h2>
+  <h2 class="mt-4">Comments</h2>
   <div class="card-list">
     <template v-if="article">
       <div v-for="( comment, key, index ) in article.comments" :key="key" class="card p-3 mb-2">
@@ -70,6 +70,7 @@ export default {
     onComment: function(id) {
       let url = 'http://18.217.62.142/api/comments/' + id;
       this.article.comment = this.comment
+      this.article.commentOnly = true;
       axios.post(url, this.article)
         .then(res => {
           window.location.href = 'http://18.217.62.142/articles/detail/' + this.$route.params.id;

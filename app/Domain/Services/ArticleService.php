@@ -29,7 +29,6 @@ class ArticleService {
     }
 
     public function update(array $params) {
-        Log::debug($params);
         $article = Article::fromParams($params);
 
         return $this->repository->save($article);

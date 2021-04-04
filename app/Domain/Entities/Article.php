@@ -17,7 +17,9 @@ class Article {
     static function fromParams(array $params) {
 
         $commentsEntity = new Comments();
-        $commentsEntity->add(Comment::fromParams($params));
+        if (isset($params["commentOnly"])) {
+            $commentsEntity->add(Comment::fromParams($params));
+        }
         return new self(
             $params["id"] ?? "",
             false,

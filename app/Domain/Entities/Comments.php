@@ -2,6 +2,8 @@
 
 namespace App\Domain\Entities;
 
+use Illuminate\Support\Facades\Log;
+
 class Comments {
 
     private $comments;
