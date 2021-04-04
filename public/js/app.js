@@ -1937,6 +1937,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       isAlert: false,
+      alertMessage: "",
       isEdit: true,
       article: {
         id: '',
@@ -1968,15 +1969,25 @@ __webpack_require__.r(__webpack_exports__);
     onUpdate: function onUpdate(id) {
       var _this2 = this;
 
-      var url = id == undefined || id == null ? 'http://18.217.62.142/api/articles' : 'http://18.217.62.142/api/articles/' + id;
+      var url = id == "" || id == null ? 'http://18.217.62.142/api/articles' : 'http://18.217.62.142/api/articles/' + id;
       axios.post(url, this.article).then(function (res) {
         if (_this2.isEdit == false) {
           _this2.$router.push('list');
         } else {
           _this2.isAlert = true;
+          _this2.alertMessage = "Update Successfully!";
         }
       })["catch"](function (err) {
-        console.log(err);
+        console.log("aaa");
+        console.log(err.response.data.errors.title);
+
+        if (err.response.data.errors.title == "undefined") {
+          _this2.alertMessage = "Something went wrong!";
+        } else {
+          _this2.alertMessage = err.response.data.errors.title.join(",");
+        }
+
+        _this2.isAlert = true;
       });
     },
     closeAlert: function closeAlert() {
@@ -2058,13 +2069,20 @@ __webpack_require__.r(__webpack_exports__);
         _this.article = res;
       });
     },
+    onDelete: function onDelete(id) {
+      var url = 'http://18.217.62.142/api/articles/' + id;
+      axios["delete"](url).then(function (res) {
+        window.location.href = 'http://18.217.62.142/articles/list';
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    },
     onComment: function onComment(id) {
       var _this2 = this;
 
       var url = 'http://18.217.62.142/api/comments/' + id;
       this.article.comment = this.comment;
       axios.post(url, this.article).then(function (res) {
-        // this.article.comments.push(this.comment);
         window.location.href = 'http://18.217.62.142/articles/detail/' + _this2.$route.params.id;
       })["catch"](function (err) {
         console.log(err);
@@ -37818,7 +37836,7 @@ var render = function() {
                 attrs: { role: "alert" }
               },
               [
-                _c("strong", [_vm._v("Update Successfully!")]),
+                _c("strong", [_vm._v(_vm._s(_vm.alertMessage))]),
                 _vm._v(" "),
                 _c(
                   "button",
@@ -37859,7 +37877,7 @@ var render = function() {
             }
           ],
           staticClass: "form-control mb-2",
-          attrs: { type: "text", name: "title" },
+          attrs: { type: "text", name: "title", maxlength: "50" },
           domProps: { value: _vm.article.title },
           on: {
             input: function($event) {
@@ -37883,7 +37901,7 @@ var render = function() {
             }
           ],
           staticClass: "form-control mb-2",
-          attrs: { type: "text", name: "short_description" },
+          attrs: { type: "text", name: "short_description", maxlength: "255" },
           domProps: { value: _vm.article.short_description },
           on: {
             input: function($event) {
@@ -37907,7 +37925,7 @@ var render = function() {
             }
           ],
           staticClass: "form-control mb-2",
-          attrs: { name: "full_description" },
+          attrs: { name: "full_description", maxlength: "255" },
           domProps: { value: _vm.article.full_description },
           on: {
             input: function($event) {

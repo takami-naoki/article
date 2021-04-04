@@ -47,14 +47,12 @@ class EloquentArticleRepository implements ArticleRepositoryInterface {
             $articleEloquent->fill(
                 [
                     'title' => $article->title(),
-                    'user_id' => Auth::user()->id,
                     'short_description' => $article->shortDescription(),
                     'full_description' => $article->fullDescription(),
                 ]
             )->save();
 
             if ($article->comments()->has()) {
-                Log::debug($article->id());
                 Comment::create(
                     [
                         'comment' => $article->comments()->first()->comment(),

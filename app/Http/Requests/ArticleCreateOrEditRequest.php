@@ -21,9 +21,18 @@ class ArticleCreateOrEditRequest extends FormRequest {
      */
     public function rules() {
         return [
-//            'title' => 'required|string|max:50',
-//            'short_description' => 'string|max:255',
-//            'full_description' => 'string|max:5000',
+            'title' => 'required|string|max:50',
+            'short_description' => 'string|max:255',
+            'full_description' => 'string|max:5000',
+        ];
+    }
+
+    public function messages() {
+        return [
+            'title.required' => 'A title is required',
+            'title.max' => 'Input title within 50 characters',
+            'short_description.max' => 'Input title within 255 characters',
+            'full_description.max' => 'Input title within 255 characters',
         ];
     }
 }

@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Domain\Services\ArticleService;
 use App\Http\Requests\ArticleCreateOrEditRequest;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 class ArticlesController extends Controller {
@@ -32,6 +30,7 @@ class ArticlesController extends Controller {
     }
 
     public function update(ArticleCreateOrEditRequest $request) {
+        Log::debug("ccc");
         $this->articleService->update($request->all());
     }
 

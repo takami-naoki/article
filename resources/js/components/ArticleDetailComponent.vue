@@ -59,12 +59,19 @@ export default {
             this.article = res
           });
     },
+    onDelete: function(id) {
+      let url = 'http://18.217.62.142/api/articles/' + id;
+      axios.delete(url)
+          .then(res => {
+              window.location.href = 'http://18.217.62.142/articles/list';
+          })
+          .catch(err => { console.log(err) });
+    },
     onComment: function(id) {
       let url = 'http://18.217.62.142/api/comments/' + id;
       this.article.comment = this.comment
       axios.post(url, this.article)
         .then(res => {
-          // this.article.comments.push(this.comment);
           window.location.href = 'http://18.217.62.142/articles/detail/' + this.$route.params.id;
         })
         .catch(err => { console.log(err) });
