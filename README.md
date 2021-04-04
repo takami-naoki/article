@@ -31,7 +31,7 @@ Bootstrap 4.0.0<br>
 ![diagram](https://user-images.githubusercontent.com/2871056/113497030-7ac9c600-94b4-11eb-8d0f-587c1bc253ff.png)
 
 ## Points to be improved
-・UI (padding, margin, showing loading image while fetching data)
-・When error occurs, handle errors and rendering view properly
-・Add delete function for comments
+・UI (padding, margin, showing loading image while fetching data)<br>
+・When error occurs, handle errors and rendering view properly<br>
+・Add delete function for comments<br>
 ・Add sort article list function by created or updated or something
