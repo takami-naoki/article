@@ -1978,13 +1978,14 @@ __webpack_require__.r(__webpack_exports__);
           _this2.alertMessage = "Update Successfully!";
         }
       })["catch"](function (err) {
-        console.log("aaa");
-        console.log(err.response.data.errors.title);
+        _this2.alertMessage = "";
 
-        if (err.response.data.errors.title == "undefined") {
-          _this2.alertMessage = "Something went wrong!";
+        if (Object.keys(err.response.data.errors).length > 0) {
+          for (var key in err.response.data.errors) {
+            _this2.alertMessage += err.response.data.errors[key].join(",") + "\n";
+          }
         } else {
-          _this2.alertMessage = err.response.data.errors.title.join(",");
+          _this2.alertMessage = "Something went wrong!";
         }
 
         _this2.isAlert = true;
@@ -37836,7 +37837,9 @@ var render = function() {
                 attrs: { role: "alert" }
               },
               [
-                _c("strong", [_vm._v(_vm._s(_vm.alertMessage))]),
+                _c("strong", { staticStyle: { "white-space": "pre-line" } }, [
+                  _vm._v(_vm._s(_vm.alertMessage))
+                ]),
                 _vm._v(" "),
                 _c(
                   "button",

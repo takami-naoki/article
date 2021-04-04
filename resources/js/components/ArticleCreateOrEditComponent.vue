@@ -2,7 +2,7 @@
   <div>
     <template v-if="isAlert == true">
       <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong>{{ alertMessage }}</strong>
+        <strong style="white-space: pre-line">{{ alertMessage }}</strong>
         <button v-on:click="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -66,13 +66,14 @@ export default {
             }
           })
           .catch(err => {
-            console.log("aaa");
-            console.log(err.response.data.errors);
-            // if (err.response.data.errors.title == "undefined") {
+            this.alertMessage = "";
+            if (Object.keys(err.response.data.errors).length > 0) {
+                for (let key in err.response.data.errors) {
+                  this.alertMessage += err.response.data.errors[key].join(",") + "\n";
+                }
+            } else {
               this.alertMessage = "Something went wrong!";
-            // } else {
-            //   this.alertMessage = err.response.data.errors.title.join(",");
-            // }
+            }
             this.isAlert = true;
           });
     },
