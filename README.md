@@ -23,9 +23,9 @@ http://18.217.62.142/articles/createOrEdit<br><br>
 http://18.217.62.142/articles/detail/214<br><br>
 
 ## Languages
-Laravel
-Vue 
-Bootstrap 4.0.0
+Laravel 7.30.4<br>
+Vue 2.6.12<br>
+Bootstrap 4.0.0<br>
 
 ## Diagram for tables
 
