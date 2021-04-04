@@ -28,7 +28,7 @@ Vue 2.6.12<br>
 Bootstrap 4.0.0<br>
 
 ## Diagram for tables
-
+![diagram](https://user-images.githubusercontent.com/2871056/113497030-7ac9c600-94b4-11eb-8d0f-587c1bc253ff.png)
 
 ## Points to be improved
 ・UI (padding, margin, showing loading image while fetching data)
