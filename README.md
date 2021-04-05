@@ -5,7 +5,11 @@ I developed it with DDD architecture using Laravel, Vue. <br><br>
 You can confirm it accessing aws server EC2, http://18.217.62.142/<br>
 Please kindly note the following,<br>
  ・you can edit or delete articles in detail page if it is yours.<br>
- ・you need to sign up and log in first before browsing or creating articles.<br>
+ ・you need to sign up and log in first before browsing or creating articles.<br><br>
+
+You can use this accout for demo.<br>
+ID: takami.naoki.ca@gmail.com<br>
+Password: 11111111
 
 [Login]<br>
 http://18.217.62.142/login<br><br>
