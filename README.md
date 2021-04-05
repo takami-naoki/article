@@ -7,7 +7,7 @@ Please kindly note the following,<br>
  ・you can edit or delete articles in detail page if it is yours.<br>
  ・you need to sign up and log in first before browsing or creating articles.<br><br>
 
-You can use this accout for demo.<br>
+You can use this accout for demostoration.<br>
 ID: takami.naoki.ca@gmail.com<br>
 Password: 11111111
 
